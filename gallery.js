@@ -1,3 +1,4 @@
+import * as basicLightbox from 'basiclightbox'
 const images = [
     {
         preview:
@@ -90,7 +91,7 @@ onGalleryClick = (event, src) => {
     event.preventDefault();
     src = event.target.getAttribute('data-source');
     if (event.target.classList.contains('gallery-image')) {
-        const instance = basicLightbox.create(`
+        const instance = create(`
     <img src=${src}>`,
             { closable: false }
         );
