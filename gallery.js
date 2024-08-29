@@ -1,4 +1,3 @@
-import * as basicLightbox from 'basiclightbox'
 const images = [
     {
         preview:
