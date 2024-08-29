@@ -1,4 +1,4 @@
-const basicLightbox = require('basiclightbox')
+import * as basicLightbox from 'basiclightbox'
 const images = [
     {
         preview:
