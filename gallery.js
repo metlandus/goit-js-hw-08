@@ -1,3 +1,4 @@
+const basicLightbox = require('basiclightbox')
 const images = [
     {
         preview:
@@ -90,7 +91,7 @@ onGalleryClick = (event, src) => {
     event.preventDefault();
     src = event.target.getAttribute('data-source');
     if (event.target.classList.contains('gallery-image')) {
-        const instance = create(`
+        const instance = basicLightbox.create(`
     <img src=${src}>`,
             { closable: false }
         );
