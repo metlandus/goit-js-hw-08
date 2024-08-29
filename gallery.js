@@ -1,4 +1,3 @@
-const basicLightbox = require('basiclightbox')
 const images = [
     {
         preview:
