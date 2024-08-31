@@ -68,33 +68,29 @@ const gallery = document.querySelector('.gallery');
 const galleryImage = document.querySelector('.gallery-image');
 const lightBoxModal = document.querySelector('.basicLightbox');
 
-const galleryItems = images.map(image => createGallery(image));
+const galleryItems = images.map(image => createGallery(image)).join('');
+
+gallery.innerHTML = galleryItems;
 
 function createGallery(image) {
-    const li = document.createElement('li');
-    gallery.appendChild(li);
-    li.classList.add('gallery-item');
-    const a = document.createElement('a');
-    li.appendChild(a);
-    a.classList.add('gallery-link');
-    a.setAttribute("href", image.original)
-    const img = document.createElement('img');
-    a.appendChild(img);
-    img.classList.add('gallery-image');
-    img.setAttribute("src", image.preview);
-    img.setAttribute("data-source", image.original);
-    img.setAttribute("alt", image.description);
+    return `
+        <li class="gallery-item">
+            <a class="gallery-link" href="${image.original}">
+                <img class="gallery-image" src="${image.preview}" data-source="${image.original}" alt="${image.description}">
+            </a>
+        </li>
+    `;
 }
+
 
 onGalleryClick = (event, src) => {
     event.preventDefault();
     src = event.target.getAttribute('data-source');
-    if (event.target.classList.contains('gallery-image')) {
+    if (event.target.nodeName ==='IMG') {
         const instance = basicLightbox.create(`
     <img src=${src}>`,
             { closable: false }
         );
-        instance.show();
         if (instance.show()) {
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
